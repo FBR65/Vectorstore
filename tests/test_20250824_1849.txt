@@ -1,0 +1,168 @@
+INFO:faiss.loader:Loading faiss with AVX2 support.
+INFO:faiss.loader:Successfully loaded faiss with AVX2 support.
+============================================================
+Running Embedding System Tests
+============================================================
+test_embedding_dimension_detection (test_embedding_system.TestEmbeddingManager)
+Test embedding dimension detection. ... INFO:embedding_manager:Loading sentence transformer model: paraphrase-multilingual-MiniLM-L12-v2
+INFO:embedding_manager:Sentence transformer model loaded successfully
+INFO:embedding_manager:EmbeddingManager initialized with method: sentence-transformer, model: paraphrase-multilingual-MiniLM-L12-v2
+ok
+test_invalid_method (test_embedding_system.TestEmbeddingManager)
+Test invalid embedding method. ... ok
+test_ollama_connection_failure (test_embedding_system.TestEmbeddingManager)
+Test Ollama connection failure. ... INFO:embedding_manager:Using Ollama model: bge-m3
+ERROR:embedding_manager:Failed to connect to Ollama: Connection failed
+WARNING:embedding_manager:Ollama connection failed, embeddings may not work
+INFO:embedding_manager:EmbeddingManager initialized with method: ollama, model: paraphrase-multilingual-MiniLM-L12-v2
+ERROR:embedding_manager:Failed to connect to Ollama: Connection failed
+ok
+test_ollama_connection_test (test_embedding_system.TestEmbeddingManager)
+Test Ollama connection test. ... INFO:embedding_manager:Using Ollama model: bge-m3
+INFO:embedding_manager:Ollama connection successful
+INFO:embedding_manager:EmbeddingManager initialized with method: ollama, model: paraphrase-multilingual-MiniLM-L12-v2
+INFO:embedding_manager:Ollama connection successful
+ok
+test_ollama_dimension_detection (test_embedding_system.TestEmbeddingManager)
+Test Ollama embedding dimension detection. ... INFO:embedding_manager:Using Ollama model: bge-m3
+INFO:httpx:HTTP Request: GET http://localhost:11434/v1/models "HTTP/1.1 200 OK"
+INFO:embedding_manager:Ollama connection successful
+INFO:embedding_manager:EmbeddingManager initialized with method: ollama, model: paraphrase-multilingual-MiniLM-L12-v2
+ok
+test_ollama_embedding_generation (test_embedding_system.TestEmbeddingManager)
+Test Ollama embedding generation. ... INFO:embedding_manager:Using Ollama model: bge-m3
+INFO:embedding_manager:Ollama connection successful
+INFO:embedding_manager:EmbeddingManager initialized with method: ollama, model: paraphrase-multilingual-MiniLM-L12-v2
+INFO:embedding_manager:Generating embeddings for 3 texts using Ollama
+INFO:embedding_manager:Generated embeddings with shape: (3, 4)
+ok
+test_ollama_initialization (test_embedding_system.TestEmbeddingManager)
+Test Ollama client initialization. ... INFO:embedding_manager:Using Ollama model: bge-m3
+INFO:embedding_manager:Ollama connection successful
+INFO:embedding_manager:EmbeddingManager initialized with method: ollama, model: paraphrase-multilingual-MiniLM-L12-v2
+ok
+test_sentence_transformer_embedding_generation (test_embedding_system.TestEmbeddingManager)
+Test SentenceTransformer embedding generation. ... INFO:embedding_manager:Loading sentence transformer model: paraphrase-multilingual-MiniLM-L12-v2
+INFO:embedding_manager:Sentence transformer model loaded successfully
+INFO:embedding_manager:EmbeddingManager initialized with method: sentence-transformer, model: paraphrase-multilingual-MiniLM-L12-v2
+INFO:embedding_manager:Generating embeddings for 3 texts using sentence transformer
+INFO:embedding_manager:Generated embeddings with shape: (3, 3)
+ok
+test_sentence_transformer_initialization (test_embedding_system.TestEmbeddingManager)
+Test SentenceTransformer initialization. ... INFO:embedding_manager:Loading sentence transformer model: paraphrase-multilingual-MiniLM-L12-v2
+INFO:embedding_manager:Sentence transformer model loaded successfully
+INFO:embedding_manager:EmbeddingManager initialized with method: sentence-transformer, model: paraphrase-multilingual-MiniLM-L12-v2
+ok
+test_create_knowledge_base_from_clusters (test_embedding_system.TestKnowledgeBaseIntegration)
+Test create_knowledge_base_from_clusters with auto-generated embeddings. ... INFO:embedding_manager:Using Ollama model: bge-m3
+INFO:embedding_manager:Ollama connection successful
+INFO:embedding_manager:EmbeddingManager initialized with method: ollama, model: paraphrase-multilingual-MiniLM-L12-v2
+INFO:knowledge_base:ChromaDB initialized with persist directory: data\knowledge_base\chroma_db
+INFO:knowledge_base:Using CPU for FAISS operations
+INFO:knowledge_base:KnowledgeBase initialized with persist directory: data\knowledge_base, index_type: flat, use_gpu: False, embedding_method: {'method': 'ollama', 'model_name': 'paraphrase-multilingual-MiniLM-L12-v2', 'embedding_dimension': 1024, 'ollama_url': 'http://localhost:11434', 'ollama_model': 'bge-m3'}
+INFO:knowledge_base:KnowledgeBase initialized with persist directory: data\knowledge_base, index_type: flat, use_gpu: False
+INFO:embedding_manager:Using Ollama model: bge-m3
+INFO:embedding_manager:Ollama connection successful
+INFO:embedding_manager:EmbeddingManager initialized with method: ollama, model: paraphrase-multilingual-MiniLM-L12-v2
+INFO:knowledge_base:Generating embeddings for 3 texts using {'method': 'ollama', 'model_name': 'paraphrase-multilingual-MiniLM-L12-v2', 'embedding_dimension': 1024, 'ollama_url': 'http://localhost:11434', 'ollama_model': 'bge-m3'}
+INFO:embedding_manager:Generating embeddings for 3 texts using Ollama
+INFO:embedding_manager:Generated embeddings with shape: (4, 1024)
+INFO:knowledge_base:Added 3 entries to ChromaDB in batch
+INFO:knowledge_base:Building FAISS index...
+INFO:knowledge_base:Added 3 embeddings to FAISS index
+INFO:knowledge_base:FAISS index built with 3 embeddings
+INFO:knowledge_base:Added 3 entries to knowledge base in batch
+ok
+test_knowledge_base_statistics (test_embedding_system.TestKnowledgeBaseIntegration)
+Test KnowledgeBase statistics. ... INFO:embedding_manager:Using Ollama model: bge-m3
+INFO:httpx:HTTP Request: GET http://localhost:11434/v1/models "HTTP/1.1 200 OK"
+INFO:embedding_manager:Ollama connection successful
+INFO:embedding_manager:EmbeddingManager initialized with method: ollama, model: paraphrase-multilingual-MiniLM-L12-v2
+INFO:knowledge_base:ChromaDB initialized with persist directory: C:\Users\frank\AppData\Local\Temp\tmpds7_5rur\chroma_db
+INFO:knowledge_base:Using CPU for FAISS operations
+INFO:knowledge_base:KnowledgeBase initialized with persist directory: C:\Users\frank\AppData\Local\Temp\tmpds7_5rur, index_type: flat, use_gpu: False, embedding_method: {'method': 'ollama', 'model_name': 'paraphrase-multilingual-MiniLM-L12-v2', 'embedding_dimension': 1024, 'ollama_url': 'http://localhost:11434', 'ollama_model': 'bge-m3'}
+INFO:knowledge_base:KnowledgeBase initialized with persist directory: C:\Users\frank\AppData\Local\Temp\tmpds7_5rur, index_type: flat, use_gpu: False
+INFO:knowledge_base:Building FAISS index...
+INFO:knowledge_base:Added 1 embeddings to FAISS index
+INFO:knowledge_base:FAISS index built with 1 embeddings
+ok
+test_knowledge_base_with_ollama (test_embedding_system.TestKnowledgeBaseIntegration)
+Test KnowledgeBase with Ollama embeddings. ... INFO:embedding_manager:Using Ollama model: bge-m3
+INFO:embedding_manager:Ollama connection successful
+INFO:embedding_manager:EmbeddingManager initialized with method: ollama, model: paraphrase-multilingual-MiniLM-L12-v2
+WARNING:knowledge_base:Overriding embedding dimension to 1024
+INFO:knowledge_base:ChromaDB initialized with persist directory: C:\Users\frank\AppData\Local\Temp\tmp0rxm_vfn\chroma_db
+INFO:knowledge_base:Using CPU for FAISS operations
+INFO:knowledge_base:KnowledgeBase initialized with persist directory: C:\Users\frank\AppData\Local\Temp\tmp0rxm_vfn, index_type: flat, use_gpu: False, embedding_method: {'method': 'ollama', 'model_name': 'paraphrase-multilingual-MiniLM-L12-v2', 'embedding_dimension': 1024, 'ollama_url': 'http://localhost:11434', 'ollama_model': 'bge-m3'}
+INFO:knowledge_base:KnowledgeBase initialized with persist directory: C:\Users\frank\AppData\Local\Temp\tmp0rxm_vfn, index_type: flat, use_gpu: False
+INFO:knowledge_base:Building FAISS index...
+INFO:knowledge_base:Added 1 embeddings to FAISS index
+INFO:knowledge_base:FAISS index built with 1 embeddings
+INFO:embedding_manager:Generating embeddings for 1 texts using Ollama
+INFO:embedding_manager:Generated embeddings with shape: (3, 1024)
+INFO:knowledge_base:Building FAISS index...
+INFO:knowledge_base:Added 3 embeddings to FAISS index
+INFO:knowledge_base:FAISS index built with 3 embeddings
+ok
+test_knowledge_base_with_sentence_transformer (test_embedding_system.TestKnowledgeBaseIntegration)
+Test KnowledgeBase with SentenceTransformer embeddings. ... INFO:embedding_manager:Using Ollama model: bge-m3
+INFO:httpx:HTTP Request: GET http://localhost:11434/v1/models "HTTP/1.1 200 OK"
+INFO:embedding_manager:Ollama connection successful
+INFO:embedding_manager:EmbeddingManager initialized with method: ollama, model: paraphrase-multilingual-MiniLM-L12-v2
+WARNING:knowledge_base:Overriding embedding dimension to 384
+INFO:knowledge_base:ChromaDB initialized with persist directory: C:\Users\frank\AppData\Local\Temp\tmpn9yb9nt5\chroma_db
+INFO:knowledge_base:Using CPU for FAISS operations
+INFO:knowledge_base:KnowledgeBase initialized with persist directory: C:\Users\frank\AppData\Local\Temp\tmpn9yb9nt5, index_type: flat, use_gpu: False, embedding_method: {'method': 'ollama', 'model_name': 'paraphrase-multilingual-MiniLM-L12-v2', 'embedding_dimension': 1024, 'ollama_url': 'http://localhost:11434', 'ollama_model': 'bge-m3'}
+INFO:knowledge_base:KnowledgeBase initialized with persist directory: C:\Users\frank\AppData\Local\Temp\tmpn9yb9nt5, index_type: flat, use_gpu: False
+INFO:knowledge_base:Building FAISS index...
+INFO:knowledge_base:Added 1 embeddings to FAISS index
+INFO:knowledge_base:FAISS index built with 1 embeddings
+ok
+test_batch_embedding_generation (test_embedding_system.TestBatchProcessing)
+Test batch embedding generation with Ollama. ... INFO:embedding_manager:Using Ollama model: bge-m3
+INFO:embedding_manager:Ollama connection successful
+INFO:embedding_manager:EmbeddingManager initialized with method: ollama, model: paraphrase-multilingual-MiniLM-L12-v2
+INFO:embedding_manager:Generating embeddings for 100 texts using Ollama
+INFO:embedding_manager:Generated embeddings with shape: (100, 4)
+ok
+test_batch_sentence_transformer (test_embedding_system.TestBatchProcessing)
+Test batch processing with SentenceTransformer. ... INFO:embedding_manager:Loading sentence transformer model: paraphrase-multilingual-MiniLM-L12-v2
+INFO:embedding_manager:Sentence transformer model loaded successfully
+INFO:embedding_manager:EmbeddingManager initialized with method: sentence-transformer, model: paraphrase-multilingual-MiniLM-L12-v2
+INFO:embedding_manager:Generating embeddings for 100 texts using sentence transformer
+INFO:embedding_manager:Generated embeddings with shape: (100, 384)
+ok
+test_empty_text_list (test_embedding_system.TestErrorHandling)
+Test handling of empty text list. ... INFO:embedding_manager:Loading sentence transformer model: paraphrase-multilingual-MiniLM-L12-v2      
+INFO:sentence_transformers.SentenceTransformer:Use pytorch device_name: cpu
+INFO:sentence_transformers.SentenceTransformer:Load pretrained SentenceTransformer: paraphrase-multilingual-MiniLM-L12-v2
+INFO:embedding_manager:Sentence transformer model loaded successfully
+INFO:embedding_manager:EmbeddingManager initialized with method: sentence-transformer, model: paraphrase-multilingual-MiniLM-L12-v2
+ok
+test_ollama_api_error (test_embedding_system.TestErrorHandling)
+Test handling of Ollama API errors. ... INFO:embedding_manager:Using Ollama model: bge-m3
+INFO:embedding_manager:Ollama connection successful
+INFO:embedding_manager:EmbeddingManager initialized with method: ollama, model: paraphrase-multilingual-MiniLM-L12-v2
+INFO:embedding_manager:Generating embeddings for 1 texts using Ollama
+ERROR:embedding_manager:Failed to generate embeddings with Ollama: API Error
+ok
+test_sentence_transformer_error (test_embedding_system.TestErrorHandling)
+Test handling of SentenceTransformer errors. ... INFO:embedding_manager:Loading sentence transformer model: paraphrase-multilingual-MiniLM-L12-v2
+INFO:embedding_manager:Sentence transformer model loaded successfully
+INFO:embedding_manager:EmbeddingManager initialized with method: sentence-transformer, model: paraphrase-multilingual-MiniLM-L12-v2
+INFO:embedding_manager:Generating embeddings for 1 texts using sentence transformer
+ERROR:embedding_manager:Failed to generate embeddings with sentence transformer: Model Error
+ok
+
+----------------------------------------------------------------------
+Ran 18 tests in 4.225s
+
+OK
+
+============================================================
+Test Summary
+============================================================
+Tests run: 18
+Failures: 0
+Errors: 0
+Skipped: 0

@@ -1,0 +1,125 @@
+[project]
+name = "Vectorstore"
+version = "0.2.0"
+description = "A Vectorstorector API with FAISS and ChromaDB"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "numpy>=1.24.0",
+    "faiss-cpu>=1.7.0",
+    "chromadb>=0.4.0",
+    "fastapi>=0.104.0",
+    "uvicorn>=0.24.0",
+    "pydantic>=2.0.0",
+    "tqdm>=4.65.0",
+    "python-multipart>=0.0.6",
+    "tomli>=2.0.0",  # For pyproject.toml configuration parsing
+    "sentence-transformers>=2.2.0",  # For local sentence transformers
+    "openai>=1.0.0",  # For OpenAI-compatible API calls
+    "python-dotenv>=1.0.0",  # For environment variable management
+]
+
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "black>=23.0.0",
+    "flake8>=6.0.0",
+    "mypy>=1.0.0",
+    "pytest-asyncio>=0.21.0",
+]
+gpu = [
+    "faiss-gpu>=1.7.0",  # GPU version of FAISS for accelerated vector search
+]
+
+[project.scripts]
+knowledgebase-server = "src.server.fastapi_server:main"
+knowledgebase-mcp = "src.server.mcp_server:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src"]
+
+[tool.uv]
+dev-dependencies = [
+    "pytest>=7.0.0",
+    "black>=23.0.0",
+    "flake8>=6.0.0",
+    "mypy>=1.0.0",
+    "pytest-asyncio>=0.21.0",
+]
+
+[tool.uv.sources]
+# Optional: specify sources for packages if needed
+
+# KnowledgeBase Configuration
+[tool.knowledgebase]
+# Server Configuration
+server_host = "0.0.0.0"
+server_port = 8000
+server_reload = false
+server_workers = 1
+
+# Database Configuration
+database_persist_directory = "./data/knowledge_base"
+database_embedding_dimension = 1024
+database_use_gpu = false
+database_index_type = "flat"
+
+# Performance Configuration
+performance_max_workers = 4
+performance_batch_size = 10
+performance_cache_ttl = 300
+performance_max_results = 10
+performance_similarity_threshold = 0.1
+performance_max_context_length = 4000
+
+# Search Configuration
+search_max_results = 10
+search_similarity_threshold = 0.1
+search_max_context_length = 4000
+search_enable_caching = true
+search_cache_ttl = 300
+
+# MCP Configuration
+mcp_enabled = true
+mcp_host = "localhost"
+mcp_port = 8001
+mcp_server_name = "knowledgebase"
+mcp_server_version = "0.2.0"
+mcp_max_results = 10
+mcp_max_context_length = 4000
+mcp_similarity_threshold = 0.1
+mcp_enable_caching = true
+mcp_cache_ttl = 300
+
+# Logging Configuration
+logging_level = "INFO"
+logging_format = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+logging_file = "logs/knowledgebase.log"
+logging_max_size = "10MB"
+logging_backup_count = 5
+
+# Backup Configuration
+backup_enabled = true
+backup_directory = "./data/knowledge_base/backups"
+backup_interval_hours = 24
+backup_max_backups = 30
+backup_compress = true
+
+# Development Configuration
+development_debug = true
+development_show_error = true
+development_share = false
+development_auto_reload = true
+
+# Production Configuration
+production_debug = false
+production_show_error = false
+production_share = false
+production_auto_reload = false
+production_workers = 4
+production_timeout = 30
